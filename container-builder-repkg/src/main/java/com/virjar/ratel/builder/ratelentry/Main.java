@@ -64,6 +64,7 @@ public class Main {
                 }
             }
             if (xApkIndex <= 0) {
+                // apk 文件入口位置
                 ratelMain(args, null);
                 System.out.println("task finish success");
                 return;
@@ -108,6 +109,7 @@ public class Main {
     }
 
     private static File ratelMain(BuilderContext context, XApkHandler xApkHandler) throws Exception {
+        // x 提取原始 apk
         if (context.cmd.hasOption('x')) {
             extractOriginAPk(context);
             return null;
@@ -121,7 +123,7 @@ public class Main {
             System.out.println("release split apks");
             xApkHandler.releaseApks();
         }
-
+        //
         BindingResourceManager.extract(workDir);
 
         Util.setupRatelSupportArch(context.ratelBuildProperties.getProperty("ratel_support_abis", "arm64-v8a,armeabi-v7a"));

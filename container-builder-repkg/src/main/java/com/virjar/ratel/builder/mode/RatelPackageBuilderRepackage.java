@@ -49,6 +49,7 @@ public class RatelPackageBuilderRepackage {
                 + "] ");
         DexFiles dexFiles = context.dexFiles;
 
+        // 代码注入，在父类的静态代码块中插入代码
         if (StringUtils.isNotBlank(buildParamMeta.androidAppComponentFactory)) {
             // inject for android 10
             DexFiles.DexFile dex = context.dexFiles.findClassInDex(buildParamMeta.androidAppComponentFactory);

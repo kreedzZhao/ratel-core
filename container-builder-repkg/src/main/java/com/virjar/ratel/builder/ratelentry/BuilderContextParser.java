@@ -47,6 +47,7 @@ public class BuilderContextParser {
         } else if (builderContext.cmd.hasOption('o')) {
             outFile = new File(builderContext.cmd.getOptionValue('o'));
         } else {
+            // 这里是默认输出文件名
             String base = builderContext.infectApk.apkMeta.getPackageName() + "_" + builderContext.infectApk.apkMeta.getVersionName() + "_" + builderContext.infectApk.apkMeta.getVersionCode();
             if (isXApk) {
                 outFile = new File(base + "_ratel.xapk");
@@ -100,9 +101,13 @@ public class BuilderContextParser {
             BuilderContext.ApkAsset apkAsset = new BuilderContext.ApkAsset();
             apkAsset.apkFile = apkFile;
             apkAsset.file = file;
+            // meta 解析后的 manifest 信息
             apkAsset.apkMeta = apkFile.getApkMeta();
+            // 判断是否为 xp 模块
             apkAsset.isXpModule = apkFile.getFileData("assets/xposed_init") != null;
+            // apk 本质就是 zip 文件
             apkAsset.zipFile = apkFile.getZipFile();
+            // manifest xml 文本信息
             apkAsset.manifestXml = apkFile.getManifestXml();
             return apkAsset;
         } catch (Exception e) {

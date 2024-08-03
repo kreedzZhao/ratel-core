@@ -33,6 +33,7 @@ public class BindingResourceManager {
         BindingResourceManager.workDir = workDir;
         // todo 这部分数据可以直接缓存，理论上每一个引擎版本都可以有一份缓存文件，extract流程只需要处理一次
         URL runtimeUrl = BindingResourceManager.class.getClassLoader().getResource(NewConstants.BUILDER_RESOURCE_LAYOUT.RUNTIME_JAR_FILE.getNAME());
+        // 这部分感觉调试时候也可以不用这么复杂
         if (runtimeUrl == null) {
             // 请注意，这个分支只有AndroidStudio调试的时候才会走
             if (BuildEnv.DEBUG) {

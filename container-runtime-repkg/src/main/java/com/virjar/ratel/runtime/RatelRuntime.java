@@ -251,8 +251,9 @@ public class RatelRuntime {
 
     public static void ratelStartUp(Context context) throws Exception {
 
+        // apk 路径重定向
         AssertFixer.beforeIORedirect();
-
+        // false 啥也没做
         SandHook.setBatchHook(false);
         //加载所有的模块class
         XposedModuleLoader.loadXposedModuleClasses();

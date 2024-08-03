@@ -27,6 +27,7 @@ public class BootStrap {
             return;
         }
         isStartUp = true;
+        // 目前从文件夹内容看起来就是 assets 目录下的文件
         File ratelRuntimeDir = context.getDir("ratel_runtime", Context.MODE_PRIVATE);
         try {
             boolean codeUpdate = false;

@@ -48,13 +48,14 @@ public class AssertFixer {
         // /data/app/com.tencent.mm/base.apk -> /data/data/zelda.comtentcentmm/xxx/file/zelda_resource/origin_apk.apk
         // and
         // /data/app/zelda.comtentcentmm/base.apk -> /data/data/zelda.comtentcentmm/xxx/file/zelda_resource/origin_apk.apk
+        Log.i(Constants.TAG, "redirect file: " + sourceCanonicalPath + " -> " + destCanonicalPath);
         RatelNative.redirectFile(sourceCanonicalPath, destCanonicalPath);
         if (RatelRuntime.isZeldaEngine()) {
             RatelNative.redirectFile(sourceCanonicalPath.replace(RatelRuntime.nowPackageName, RatelRuntime.originPackageName), destCanonicalPath);
         }
     }
 
-    public static void afterIORedirect() {
+    public static void 萨afterIORedirect() {
         if (RatelRuntime.isKratosEngine()) {
             return;
         }
